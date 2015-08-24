@@ -8,6 +8,12 @@
         <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
         </button>
       </ion-nav-buttons>
+      <ion-nav-buttons side="right">
+        <ion-spinner icon="android"></ion-spinner>
+        <button class="button button-icon button-clear ion-email" menu-toggle="left">
+        </button>
+      </ion-nav-buttons>
+
     </ion-nav-bar>
     <ion-nav-view name="menuContent"></ion-nav-view>
   </ion-side-menu-content>
@@ -19,7 +25,7 @@
     <ion-content>
       <ion-list>
         <ion-item menu-close ng-click="login()">
-          Login
+          Войти
         </ion-item>
         <ion-item menu-close href="#/app/search">
           Search
@@ -28,7 +34,7 @@
           Browse
         </ion-item>
         <ion-item menu-close href="#/app/playlists">
-          Playlists
+          Маршруты
         </ion-item>
       </ion-list>
     </ion-content>

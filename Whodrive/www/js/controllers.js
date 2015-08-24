@@ -48,7 +48,12 @@ angular.module('starter.controllers', [])
     { title: 'Dubstep', id: 3 },
     { title: 'Indie', id: 4 },
     { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
+    { title: 'Ra1p', id: 6 },
+    { title: 'Ra4p', id: 7 },
+    { title: 'R3ap', id: 8 },
+    { title: 'R5ap', id: 9 },
+    { title: 'R3ap', id: 10 },
+    { title: 'Cowbell', id: 11 }
   ];
 })
 
