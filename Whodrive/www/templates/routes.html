@@ -1,0 +1,106 @@
+<ion-view view-title="Маршруты">
+    <ion-content class="has-bottom">
+
+        <ion-refresher
+                pulling-text="Потяниет для обновления"
+                on-refresh="doRefresh()">
+        </ion-refresher>
+        <ion-slide-box on-slide-changed="slideHasChanged($index)" does-continue="true">
+            <ion-slide>
+                <h1 class="title fixed-outside" >Сегодня!</h1>
+                <ion-list>
+                    <ion-item ng-repeat="route in routes">
+                        <div class="list card">
+                            <div class="item item-avatar">
+                                <h2> {{route.title}}</h2>
+                                <p></p>
+                            </div>
+
+                            <div class="item item-body">
+                            </div>
+
+                            <div class="item tabs tabs-secondary tabs-icon-left">
+                                <ion-spinner icon="android" ng-show="route.status == 1" ng-click="unsubscribe(routes.id)"></ion-spinner>
+                                <a class="tab-item" href="#" ng-hide="route.status == 1" ng-click="subscribe(routes.id)">
+                                    <i class="icon ion-android-checkbox-outline"></i>
+                                    Я еду!
+                                </a>
+                                <a class="tab-item" href="#">
+                                    <i class="icon ion-android-pin"></i>
+                                    На карте
+                                </a>
+
+                                <a class="tab-item" href="#">
+                                    <i class="icon ion-android-more-vertical"></i>
+                                    Подробнее
+                                </a>
+                            </div>
+                        </div>
+                    </ion-item>
+                </ion-list>
+            </ion-slide>
+            <ion-slide>
+                <h1 class="title">Завтра!</h1>
+                <ion-list>
+                    <ion-item ng-repeat="route in routes">
+                        <div class="list card">
+                            <div class="item item-avatar">
+                                <h2> {{route.title}}</h2>
+                                <p></p>
+                            </div>
+
+                            <div class="item item-body">
+                            </div>
+
+                            <div class="item tabs tabs-secondary tabs-icon-left">
+                                <a class="tab-item" href="#">
+                                    <i class="icon ion-android-pin"></i>
+                                    На карте
+                                </a>
+                                <a class="tab-item" href="#">
+                                    <i class="icon ion-android-checkbox-outline"></i>
+                                    Я еду!
+                                </a>
+                                <a class="tab-item" href="#">
+                                    <i class="icon ion-android-more-vertical"></i>
+                                    Подробнее
+                                </a>
+                            </div>
+                        </div>
+                    </ion-item>
+                </ion-list>
+            </ion-slide>
+            <ion-slide>
+                <h1 class="title">После завтра!</h1>
+                <ion-list>
+                    <ion-item ng-repeat="route in routes">
+                        <div class="list card">
+                            <div class="item item-avatar">
+                                <h2> {{route.title}}</h2>
+                                <p></p>
+                            </div>
+
+                            <div class="item item-body">
+                            </div>
+
+                            <div class="item tabs tabs-secondary tabs-icon-left">
+                                <a class="tab-item" href="#">
+                                    <i class="icon ion-android-pin"></i>
+                                    На карте
+                                </a>
+                                <a class="tab-item" href="#">
+                                    <i class="icon ion-android-checkbox-outline"></i>
+                                    Я еду!
+                                </a>
+                                <a class="tab-item" href="#">
+                                    <i class="icon ion-android-more-vertical"></i>
+                                    Подробнее
+                                </a>
+                            </div>
+                        </div>
+                    </ion-item>
+                </ion-list>
+            </ion-slide>
+        </ion-slide-box>
+    </ion-content>
+</ion-view>

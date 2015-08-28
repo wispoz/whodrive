@@ -41,20 +41,36 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('PlaylistsCtrl', function($scope) {
-  $scope.playlists = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Ra1p', id: 6 },
-    { title: 'Ra4p', id: 7 },
-    { title: 'R3ap', id: 8 },
-    { title: 'R5ap', id: 9 },
-    { title: 'R3ap', id: 10 },
-    { title: 'Cowbell', id: 11 }
-  ];
+.controller('RoutesCtrl', function($scope,$http,$ionicLoading,$filter){
+      $scope.subscribe = function(id) {
+        route =  $filter('filter')($scope.routes, {id: id})[0];
+        route.status = 1;
+
+      }
+      $scope.unsubscribe = function(id) {
+        route =  $filter('filter')($scope.routes, {id: id})[0];
+        route.status = 0;
+      }
+      $scope.doRefresh = function() {
+        $http.get('http://www.whodrive.ru/api/get-routes').
+            success(function(data, status, headers, config) {
+              $scope.routes = data;
+            }).
+            error(function(data, status, headers, config) {
+              
+            })
+            .finally(function() {
+              $scope.$broadcast('scroll.refreshComplete');
+            });;
+
+      };
+      $http.get('http://www.whodrive.ru/api/get-routes').
+          success(function(data, status, headers, config) {
+            $scope.routes = data;
+          }).
+          error(function(data, status, headers, config) {
+
+          });
 })
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {
