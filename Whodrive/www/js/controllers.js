@@ -43,21 +43,23 @@ angular.module('starter.controllers', [])
 
 .controller('RoutesCtrl', function($scope,$http,$ionicLoading,$filter){
       $scope.subscribe = function(id) {
-        route =  $filter('filter')($scope.routes, {id: id})[0];
-        route.status = 1;
+        route =  $filter('filter')($scope.tomorrow, {id: id})[0];
+        route.status = 2;
 
       }
       $scope.unsubscribe = function(id) {
-        route =  $filter('filter')($scope.routes, {id: id})[0];
+        route =  $filter('filter')($scope.tomorrow, {id: id})[0];
         route.status = 0;
       }
       $scope.doRefresh = function() {
         $http.get('http://www.whodrive.ru/api/get-routes').
             success(function(data, status, headers, config) {
-              $scope.routes = data;
+              $scope.today = data.today;
+              $scope.tomorrow = data.tomorrow;
+              $scope.after_tomorrow = data.after_tomorrow;
             }).
             error(function(data, status, headers, config) {
-              
+
             })
             .finally(function() {
               $scope.$broadcast('scroll.refreshComplete');
@@ -66,7 +68,9 @@ angular.module('starter.controllers', [])
       };
       $http.get('http://www.whodrive.ru/api/get-routes').
           success(function(data, status, headers, config) {
-            $scope.routes = data;
+              $scope.today = data.today;
+              $scope.tomorrow = data.tomorrow;
+              $scope.after_tomorrow = data.after_tomorrow;
           }).
           error(function(data, status, headers, config) {
 
